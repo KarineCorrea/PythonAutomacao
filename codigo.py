@@ -25,11 +25,12 @@ time.sleep(5)  # esperar 5 segundos
 
 
 #passo 2 fazer login
-pyautogui.click(x=674, y=447)
+pyautogui.click(x=673, y=376)  # clicar no campo de email
 pyautogui.write('karine@gmail.com')
 pyautogui.press('tab')
 pyautogui.write('karine')
 pyautogui.press('tab')
+pyautogui.press('enter')  # apertar tecla enter
 # fazer pausa maior na pagina do site
 time.sleep(5)  # esperar 5 segundos
 
@@ -41,7 +42,38 @@ import pandas
 tabela = pandas.read_csv("produtos.csv")
 print(tabela)
 
-# passo 4 consultar abela
 
-pyautogui.click(x=682, y=301)
-pyautogui.write('celular')
+for linha in tabela.index:
+    # passo 4 consultar abel
+    pyautogui.click(x=552, y=261)
+    codigo = tabela.loc[linha, "codigo"]
+    #codigo
+    pyautogui.write(str(codigo))
+    pyautogui.press("tab")
+    #marca
+    marca = str(tabela.loc[linha, "marca"])
+    pyautogui.write(marca)
+    pyautogui.press("tab")
+    #tipo
+    tipo = str(tabela.loc[linha, "tipo"])
+    pyautogui.write(tipo)
+    pyautogui.press("tab")
+    #categoria
+    categoria = str(tabela.loc[linha, "categoria"])
+    pyautogui.write(categoria)
+    pyautogui.press("tab")
+    #preço
+    preco = str(tabela.loc[linha, "preco_unitario"])
+    pyautogui.write(preco)
+    pyautogui.press("tab")
+    # custo
+    custo = str(tabela.loc[linha, "custo"])
+    pyautogui.write(custo)
+    pyautogui.press("tab")
+    obs = tabela.loc[linha, "obs"]
+    pyautogui.write(str(tabela.loc[linha, "obs"]))
+    
+    pyautogui.press("tab")
+
+    pyautogui.press("enter")  # apertar tecla enter
+    pyautogui.scroll(5000)
